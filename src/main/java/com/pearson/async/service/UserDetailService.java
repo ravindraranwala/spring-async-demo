@@ -23,7 +23,7 @@ public class UserDetailService {
 		this.restTemplate = restTemplateBuilder.build();
 	}
 
-	public CompletableFuture<Users> findUserDefails() {
+	public CompletableFuture<Users> findUserDetails() {
 		return CompletableFuture.supplyAsync(this::getUserIds).thenApply(this::getUserDetails);
 	}
 
@@ -34,7 +34,7 @@ public class UserDetailService {
 
 	private Users getUserDetails(List<Integer> ids) {
 		String queryParam = ids.stream().map(id -> "id=" + id).collect(Collectors.joining("&", "?", ""));
-		String url = String.format("http://www.mocky.io/v2/5bebd6f03300006c00fbc075/%s", queryParam);
+		String url = String.format("http://www.mocky.io/v2/5bebd6f03300006c00fbc075%s", queryParam);
 		return restTemplate.getForObject(url, Users.class);
 	}
 }

@@ -19,6 +19,6 @@ public class UserDetailController {
 
 	@GetMapping("/users")
 	public CompletableFuture<Users> findAllUsers() {
-		return userDetailService.findUserDefails();
+		return userDetailService.findUserDetails();
 	}
 }

@@ -1,26 +1,27 @@
 package com.pearson.async.domain;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
-	private String name;
-	private String blog;
+	private final String name;
+	private final String blog;
+
+	@JsonCreator
+	public User(@JsonProperty("name") String name, @JsonProperty("blog") String blog) {
+		super();
+		this.name = name;
+		this.blog = blog;
+	}
 
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	public String getBlog() {
 		return blog;
-	}
-
-	public void setBlog(String blog) {
-		this.blog = blog;
 	}
 
 	@Override
